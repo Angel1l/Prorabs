@@ -1,0 +1,34 @@
+﻿<Window x:Class="Сафари.Views.ViewsForWorkers.AddNewWorkersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Сафари.Views.ViewsForWorkers" xmlns:viewmodels="clr-namespace:Сафари.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DataManageVM}"
+        mc:Ignorable="d"       
+        Title="AddNewWorkersWindow" Height="300" Width="300"
+        Name="AddNewWorkersWnd">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Прізвище"/>
+            <TextBox Name="SurnameBlock" Text="{Binding WorkersSurname}"/>
+            <TextBlock Text="Ім'я"/>
+            <TextBox Name="NameBlock" Text="{Binding WorkersName}"/>
+            <TextBlock Text="По батькові"/>
+            <TextBox Name="PatronymicBlock" Text="{Binding WorkersPatronymic}"/>
+            <TextBlock Text="Номер"/>
+            <TextBox Name="PhoneBlock" Text="{Binding WorkersPhone}"/>
+            <TextBlock Text="Нотатки"/>
+            <TextBox Name="NotesBlock" Text="{Binding WorkersNotes}"/>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Додати працівника" Command="{Binding AddNewWorkers}"
+                CommandParameter="{Binding ElementName=AddNewWorkersWnd}"/>
+
+    </Grid>
+</Window>

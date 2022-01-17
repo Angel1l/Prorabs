@@ -1,0 +1,35 @@
+﻿<Window x:Class="Сафари.Views.ViewsForWorkers.EditWorkersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Сафари.Views.ViewsForWorkers" xmlns:viewmodels="clr-namespace:Сафари.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DataManageVM}"
+        mc:Ignorable="d"
+        Name="EditWorkersWnd"
+        Title="EditWorkersWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Нове Прізвище"/>
+            <TextBox Text="{Binding WorkersSurname}"/>
+            <TextBlock Text="Нове Ім'я"/>
+            <TextBox Text="{Binding WorkersName}"/>
+            <TextBlock Text="Нове По батькові"/>
+            <TextBox Text="{Binding WorkersPatronymic}"/>
+            <TextBlock Text="Новий Номер телефона"/>
+            <TextBox Text="{Binding WorkersPhone}"/>
+            <TextBlock Text="Нові Нотатки"/>
+            <TextBox Text="{Binding WorkersNotes}"/>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Редагувати"
+                Command="{Binding EditWorkers}"
+                CommandParameter="{Binding ElementName=EditWorkersWnd}"/>
+
+    </Grid>
+</Window>

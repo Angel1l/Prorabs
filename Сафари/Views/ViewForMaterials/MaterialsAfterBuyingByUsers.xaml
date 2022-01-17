@@ -1,0 +1,41 @@
+﻿<Window x:Class="Сафари.Views.ViewForMaterials.MaterialsAfterBuyingByUsers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Сафари.Views.ViewForMaterials" xmlns:materialsmodels="clr-namespace:Сафари.Data.Models.MaterialsModels" d:DataContext="{d:DesignInstance Type=materialsmodels:CountOfBuyingByUsersMaterials}"
+        mc:Ignorable="d"
+        Title="MaterialsAfterBuyingByUsers" Height="600" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Column="0" SelectedItem="{Binding SelectedTabItem}">
+            <TabItem Name="MaterialsTab">
+                <TabItem.Header>
+                    <TextBlock Text="Локальний кошторис"/>
+                </TabItem.Header>
+                <ListView x:Name="ViewAllMaterials" ItemsSource="{Binding AllMaterials}"
+                         SelectedItem="{Binding SelectedMaterial}" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Айді"
+                                          DisplayMemberBinding="{Binding Path = Id}"  Width="100"/>
+                            <GridViewColumn Header="Найменування робіт"
+                                          DisplayMemberBinding="{Binding Path = Name}"  Width="191"/>
+                            <GridViewColumn Header="Одиниця виміру"
+                                             DisplayMemberBinding="{Binding Path = Measure}" Width="166"/>
+                            <GridViewColumn Header="Вартість одиниці"
+                                             DisplayMemberBinding="{Binding Path = UnitPrice}" Width="168"/>
+                            <GridViewColumn Header="Кількість"
+                                             DisplayMemberBinding="{Binding Path = Count}" Width="120"/>
+                            <GridViewColumn Header="Загальна сума"
+                                             DisplayMemberBinding="{Binding Path = FullPrice}" Width="168"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

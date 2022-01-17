@@ -1,0 +1,34 @@
+﻿<Window x:Class="Сафари.Views.ViewForMaterials.AddNewMaterialsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Сафари.Views.ViewForMaterials" xmlns:viewmodels="clr-namespace:Сафари.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DataManageVM}"
+        mc:Ignorable="d"
+        Title="AddNewMaterialsWindow" Height="300" Width="300"
+        Name="AddNewMaterialsWind">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+                <TextBlock Text="Найменування"/>
+                <TextBox Name="NaimenovanieBlock" Text="{Binding MaterialsName}"/>
+                <TextBlock Text="Одиниця виміру"/>
+                <TextBox Name="MeasureBlock" Text="{Binding MaterialsMeasure}"/>
+                <TextBlock Text="Поточна ціна за одиницю"/>
+                <TextBox Name="UnitPriceBlock" Text="{Binding MaterialsUnitPrice}"/>
+                <TextBlock Text="Категорія"/>
+                <ComboBox Background="White" ItemsSource="{Binding AllCategoryMaterials}"/>
+            </StackPanel>
+            <Button Grid.Row="1" Content="Додати матеріал" Command="{Binding AddNewMaterials}"
+                CommandParameter="{Binding ElementName = AddNewMaterialsWind}"/>
+
+        </Grid>
+    </Grid>
+</Window>
