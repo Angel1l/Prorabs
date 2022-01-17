@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Сафари.Data.MainData;
 using Сафари.Data.Models.MaterialsModels;
 using Сафари.Data.Models.WorkersModels;
 using Сафари.ViewModels.ForUsers;
+using Сафари.Views;
 
 namespace Сафари.Data.DataWorker
 {
@@ -54,6 +56,32 @@ namespace Сафари.Data.DataWorker
                 return result;
             }
         }
+
+        public static Users findUser(string usersLogin, string usersPassword)
+        {
+            using(ApplicationContext db = new ApplicationContext())
+            {
+               return db.Users.Where(u => u.Login == usersLogin && u.Pass == usersPassword).FirstOrDefault();
+                
+            }
+        }
+
+        public static void addUser(string login, string password, string email)
+        {
+            using(ApplicationContext db = new ApplicationContext())
+            {
+
+                Users user = new Users(login, email, password);
+                db.Users.Add(user);
+
+                db.SaveChanges();
+
+                MessageBoxResult result = MessageBox.Show("Успішно!");
+
+            }
+            MainUserWindow mainUserWindow = new MainUserWindow();
+            mainUserWindow.Show();
+        }
         #endregion
         #region Удаляем Материал
         public static string DeleteMaterials(Materials materials)
@@ -88,26 +116,27 @@ namespace Сафари.Data.DataWorker
         }
         #endregion
         #region +Юзер
-        public static string CreateUsers(string login, string pass)
-        {
-            string result = "Успішно!";
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                bool checkIsExist = db.Users.Any(el => el.Login == login && el.Pass == pass);
-                if (checkIsExist)
-                {
-                    Users newusers = new Users();
-                    {
-                        newusers.Login = login;
-                        newusers.Pass = pass;
+        //public static string CreateUsers(string login, string pass, string email)
+        //{
+        //    string result = "Успішно!";
+        //    using (ApplicationContext db = new ApplicationContext())
+        //    {
+        //        bool checkIsExist = db.Users.Any(el => el.Login == login && el.Pass == pass && el.Email == email);
+        //        if (checkIsExist)
+        //        {
+        //            Users newusers = new Users();
+        //            {
+        //                newusers.Login = login;
+        //                newusers.Pass = pass;
+        //                newusers.Email = email;
+        //            };
+        //            db.Users.Add(newusers);
+        //            db.SaveChanges();
 
-                    };
-                    db.Users.Add(newusers);
-                    db.SaveChanges();
-                }
-                return result;
-            }
-        }
+        //        }
+        //        return result;
+        //    }
+        //}
         #endregion
         #region GetAllUsers
         public List<Users> GetAllUsers()

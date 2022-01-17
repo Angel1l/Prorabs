@@ -24,6 +24,78 @@ namespace Сафари.ViewModels
 {
     public class DataManageVM : INotifyPropertyChanged
     {
+        #region Свойства для входа
+        public string UsersLogin { get; set; }
+        public string UsersPassword { get; set; }
+
+        private RelayCommand enterToProgramm;
+        public RelayCommand EnterToProgramm
+        {
+            get
+            {
+                return enterToProgramm ?? (new RelayCommand(obj =>
+                {
+                    if(UsersLogin.Length == 0 || UsersPassword.Length == 0)
+                    {
+                        MessageBoxResult result = MessageBox.Show("Login or password incorrect");
+                    }
+                    else
+                    {
+                        var User =  DataWorker.findUser(UsersLogin, UsersPassword);
+
+                        if(User != null)
+                        {
+
+                            MaterialsWindow materialsWindow = new MaterialsWindow();
+                            SetCenterPositionAndOpen(materialsWindow);
+
+                        }
+                        else
+                        {
+                            MessageBoxResult result = MessageBox.Show("Login or password incorrect, if have not any account, you should create one");
+                        }
+                    }
+
+
+                }));
+            }
+        }
+
+
+        #endregion
+
+        #region Свойства для Регистрации 
+
+        public string login { get; set; } = "";
+        public string password { get; set; } = "";
+        public string password2 { get; set; } = "";
+        public string email { get; set; } = "";
+
+        private RelayCommand addUsersToDatabase;
+        public RelayCommand AddUsersToDatabase {
+
+            get
+            {
+                return addUsersToDatabase ?? (new RelayCommand(obj =>
+                {
+
+                    if (login.Length > 0 && password == password2 &&
+                    email.Contains("@") && email.Contains(".") && email.Length > 0)
+                    {
+                        DataWorker.addUser(login, password, email);
+                    }
+                    else
+                    {
+                        MessageBoxResult result = MessageBox.Show("Something incorrect");
+                    }
+
+                }));
+            }
+        
+        }
+
+        #endregion
+
         #region Все отделы              
         //private List<BuyMaterials> buyMaterials = DataWorker.GetMaterialsForUser();
         //public List<Materials> BuyMaterials
@@ -163,43 +235,6 @@ namespace Сафари.ViewModels
         }
         #endregion
         #region  Команды додавание Материалов/Работников/Users  
-        //Свойства для Юзера
-        public string UsersLogin { get; set; }
-        public string UsersPassword { get; set; }
-        public string ReUsersPassword { get; set; }
-
-        private RelayCommand addNewUsers;
-        public RelayCommand AddNewUsers
-        {
-            get
-            {
-                return addNewUsers ?? new RelayCommand(obj =>
-                {
-                    Window wnd = obj as Window;
-                    string resultStr = "";
-                    if (UsersLogin == null || UsersLogin.Replace(" ", "").Length == 0)
-                    {
-                        SetRedBlockControll(wnd, "Block");
-                    }
-                    if (UsersPassword == null)
-                    {
-                        SetRedBlockControll(wnd, "Block");
-                    }
-                    if (ReUsersPassword == null)
-                    {
-                        SetRedBlockControll(wnd, "Block");
-                    }
-                    else
-                    {
-                        resultStr = DataWorker.CreateUsers(UsersLogin, UsersPassword);
-                        ShowMessageToUser(resultStr);                       
-                        SetNullValuesToProperties();
-                        wnd.Close();
-                    }
-                }
-                );
-            }
-        }
         //Свойства для Работника
        
         public string WorkersName { get; set; }
@@ -450,16 +485,34 @@ namespace Сафари.ViewModels
         }
         private void OpenAddUsersRegistrationWindowMethod()
         {
-            UserRegistrationWindow newUsersregistrationWindow = new UserRegistrationWindow();
-            SetCenterPositionAndOpen(newUsersregistrationWindow);
+            UserRegWindow userRegWindow = new UserRegWindow();
+            SetCenterPositionAndOpen(userRegWindow);
         }
         private void OpenUserMainWindowMethod()
         {
             UserMainWindow newUserMainWindow = new UserMainWindow();
             SetCenterPositionAndOpen(newUserMainWindow);
         }
+        private void OpenWorkersMainWindowMethod()
+        {
+            WorkersWindow workersWindow = new WorkersWindow();
+            SetCenterPositionAndOpen(workersWindow);
+        }
+
         #endregion
-        #region Команды открытия окон Материалов/Работников/Users 
+        #region Команды открытия окон Материалов/Работников/Users     
+        private RelayCommand openWorkersWindowWnd;
+        public RelayCommand OpenWorkersWindowWnd
+        {
+            get
+            {
+                return openWorkersWindowWnd ?? new RelayCommand(obj =>
+                {
+                    OpenWorkersMainWindowMethod();
+                }
+                    );
+            }
+        }
         private RelayCommand openAddNewMaterialsWnd;
         public RelayCommand OpenAddNewMaterialsWnd
         {

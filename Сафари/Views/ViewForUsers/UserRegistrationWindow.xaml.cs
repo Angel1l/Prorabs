@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Сафари.ViewModels;
 
 namespace Сафари.Views.ViewForUsers
 {
@@ -22,6 +23,19 @@ namespace Сафари.Views.ViewForUsers
         public UserRegistrationWindow()
         {
             InitializeComponent();
+            DataContext = new DataManageVM();
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null)
+            { ((dynamic)this.DataContext).password = ((PasswordBox)sender).Password; }
+        }
+
+        private void PasswordBox_PasswordChanged2(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null)
+            { ((dynamic)this.DataContext).password2 = ((PasswordBox)sender).Password; }
         }
     }
 }

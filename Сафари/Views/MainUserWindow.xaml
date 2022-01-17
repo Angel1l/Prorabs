@@ -16,11 +16,11 @@
                 <TextBlock Text="Ласкаво просимо" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
 
                 <Grid Margin="0 0 0 20">
-                    <Button HorizontalAlignment="Right" Content="реєстрація" Command="{Binding OpenReggUsersWnd}"/>
+                    <Button HorizontalAlignment="Right" Content="реєстрація" Click="Button_RegWindow_Click"/>
                 </Grid>
                 <TextBox materialDesign:HintAssist.Hint="Введіть логін" Text="{Binding UsersLogin}"/>
-                <TextBox materialDesign:HintAssist.Hint="Введіть пароль" Text="{Binding UsersLogin}"/>
-                <Button Content="Увійти в програму" Margin="0 20" Command="{Binding }"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Введіть пароль" PasswordChanged="PasswordBox_PasswordChanged"/>
+                <Button Content="Увійти в програму" Margin="0 20" Command="{Binding EnterToProgramm}"/>
             </StackPanel>
         </Border>
     </Grid>

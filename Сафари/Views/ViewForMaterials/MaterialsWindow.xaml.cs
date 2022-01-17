@@ -27,8 +27,8 @@ namespace Сафари.Views.ViewForMaterials
             InitializeComponent();
             DataContext = new DataManageVM();
             AllMaterialsView = ViewAllMaterials;
-            SettingMaterialsDataBase settingMaterialsDataBase = new SettingMaterialsDataBase();
-            settingMaterialsDataBase.AddData();
+            //SettingMaterialsDataBase settingMaterialsDataBase = new SettingMaterialsDataBase();
+            //settingMaterialsDataBase.AddData();
         }
     }
 }

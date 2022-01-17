@@ -69,6 +69,11 @@
                     <TextBlock HorizontalAlignment="Center" Text="Матеріал для стелі" FontFamily="Champagne &amp; Limousines"/>
                 </Grid>
             </Button>
+            <Button Margin="10" Command="{Binding OpenWorkersWindowWnd}">
+                <Grid Width="150">
+                    <TextBlock HorizontalAlignment="Center" Text="Працівники" FontFamily="Champagne &amp; Limousines"/>
+                </Grid>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

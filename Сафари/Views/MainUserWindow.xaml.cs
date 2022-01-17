@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Сафари.Data.MainData;
+using Сафари.ViewModels;
+using Сафари.Views.ViewForUsers;
 
 namespace Сафари.Views
 {
@@ -23,9 +13,21 @@ namespace Сафари.Views
         public MainUserWindow()
         {
             InitializeComponent();
+            DataContext = new DataManageVM();
             //SettingMaterialsDataBase settingMaterialsDataBase = new SettingMaterialsDataBase();
             //settingMaterialsDataBase.AddData();
         }
-      
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null)
+            { ((dynamic)this.DataContext).UsersPassword = ((PasswordBox)sender).Password; }
+        }
+
+        private void Button_RegWindow_Click(object sender, RoutedEventArgs e)
+        {
+            UserRegWindow userRegWindow = new UserRegWindow();
+            userRegWindow.Show();
+            this.Close();
+        }
     }
 }
