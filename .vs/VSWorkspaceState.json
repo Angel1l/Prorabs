@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Сафари",
+    "\\Сафари\\ViewModels"
   ],
-  "SelectedNode": "\\Bastion.sln",
+  "SelectedNode": "\\Сафари\\ViewModels\\DataManageVM.cs",
   "PreviewInSolutionExplorer": false
 }

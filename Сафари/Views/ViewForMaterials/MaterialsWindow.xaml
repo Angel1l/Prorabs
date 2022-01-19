@@ -74,6 +74,16 @@
                     <TextBlock HorizontalAlignment="Center" Text="Працівники" FontFamily="Champagne &amp; Limousines"/>
                 </Grid>
             </Button>
+            <Button Margin="30" Click="Button_Click_1">
+                <Grid Width="150">
+                    <TextBlock HorizontalAlignment="Center" Text="Куплені матеріали" FontFamily="Champagne &amp; Limousines"/>
+                </Grid>
+            </Button>
+            <Button Margin="30" Click="Button_Click">
+                <Grid Width="150">
+                    <TextBlock HorizontalAlignment="Center" Text="Назад" FontFamily="Champagne &amp; Limousines"/>
+                </Grid>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

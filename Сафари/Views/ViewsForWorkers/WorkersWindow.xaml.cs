@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Сафари.ViewModels;
+using Сафари.Views.ViewForUsers;
 
 namespace Сафари.Views.ViewsForWorkers
 {
@@ -26,6 +27,13 @@ namespace Сафари.Views.ViewsForWorkers
             InitializeComponent();
             DataContext = new DataManageVM();
             AllWorkersView = ViewAllWorkers;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UserMainWindow userMainWindow = new UserMainWindow();
+            userMainWindow.Show();
+            Hide();
         }
     }
 }

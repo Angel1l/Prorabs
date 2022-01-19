@@ -24,8 +24,9 @@ namespace Сафари.ViewModels
 {
     public class DataManageVM : INotifyPropertyChanged
     {
+
         #region Свойства для входа
-        public string UsersLogin { get; set; }
+        public static string UsersLogin { get; set; }
         public string UsersPassword { get; set; }
 
         private RelayCommand enterToProgramm;
@@ -46,8 +47,8 @@ namespace Сафари.ViewModels
                         if(User != null)
                         {
 
-                            MaterialsWindow materialsWindow = new MaterialsWindow();
-                            SetCenterPositionAndOpen(materialsWindow);
+                            UserMainWindow userMainWindow = new UserMainWindow();
+                            SetCenterPositionAndOpen(userMainWindow);
 
                         }
                         else
@@ -96,18 +97,15 @@ namespace Сафари.ViewModels
 
         #endregion
 
-        #region Все отделы              
-        //private List<BuyMaterials> buyMaterials = DataWorker.GetMaterialsForUser();
-        //public List<Materials> BuyMaterials
+        #region Все отделы         
+        //public static DataWorker _dataWorker = new DataWorker();
+        //private List<BuyMaterials> _buymaterials = _dataWorker.GetMaterialsForUser();
+        //public List<BuyMaterials> _BuyMaterials
         //{
-        //    get
-        //    { return allMaterials; }
-        //    set
-        //    {
-        //        allMaterials = value;
-
-        //    }
+        //    get { return _buymaterials; }
+        //    set { _buymaterials = value; }
         //}
+
         private List<Materials> allMaterials = new List<Materials>();
         public List<Materials> AllMaterials 
         { get 
@@ -157,6 +155,7 @@ namespace Сафари.ViewModels
             }
         }
         #endregion
+
         #region Отделы материалов
         private RelayCommand materialsForWalls;
         public RelayCommand MaterialsForWalls
@@ -224,6 +223,7 @@ namespace Сафари.ViewModels
             }
         }
         #endregion
+
         #region INotifyPropertyChanged       
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
@@ -234,6 +234,7 @@ namespace Сафари.ViewModels
             }
         }
         #endregion
+
         #region  Команды додавание Материалов/Работников/Users  
         //Свойства для Работника
        
@@ -363,7 +364,7 @@ namespace Сафари.ViewModels
 
                     using (ApplicationContext db = new ApplicationContext())
                     {
-                        var user = db.Users.Where(u => u.Login == UsersViewModels.UsersLogin).FirstOrDefault();
+                        var user = db.Users.Where(u => u.Login == UsersLogin).FirstOrDefault();
 
                         db.UsersWithMaterials.Add(new UsersWithMaterials(user.Id, SelectedMaterial.Id, int.Parse(CountOfBuyingByUsersMaterials.count)));
                         db.SaveChanges();
@@ -399,6 +400,7 @@ namespace Сафари.ViewModels
         public static Workers SelectedWorkers { get; set; }
         public static TabItem SelectedTabItem { get; set; }
         #endregion
+
         #region Команды удаления
         private RelayCommand deleteEverything;
         public RelayCommand DeleteEverything
@@ -425,6 +427,7 @@ namespace Сафари.ViewModels
             }
         }
         #endregion
+
         #region Побочные свойства: SetRedBlockControll,ShowMessageToUser,SetCenterPositionAndOpen,SetNullValuesToProperties
         private void SetNullValuesToProperties()
         {
@@ -456,6 +459,7 @@ namespace Сафари.ViewModels
             window.ShowDialog();
         }
         #endregion
+
         #region Методы открытия окон Материалов/Работников/Users       
         
         private void OpenAddMaterialsWindowMethod()
@@ -500,6 +504,7 @@ namespace Сафари.ViewModels
         }
 
         #endregion
+
         #region Команды открытия окон Материалов/Работников/Users     
         private RelayCommand openWorkersWindowWnd;
         public RelayCommand OpenWorkersWindowWnd
@@ -599,6 +604,7 @@ namespace Сафари.ViewModels
         }
 
         #endregion
+
         #region Обновление Окон       
         private void UpdateAllMatetialsView()
         {

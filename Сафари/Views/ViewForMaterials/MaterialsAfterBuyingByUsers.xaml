@@ -11,7 +11,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <TabControl Grid.Column="0" SelectedItem="{Binding SelectedTabItem}">
+        <TabControl Grid.Column="0">
             <TabItem Name="MaterialsTab">
                 <TabItem.Header>
                     <TextBlock Text="Локальний кошторис"/>
@@ -21,13 +21,13 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Айді"
-                                          DisplayMemberBinding="{Binding Path = Id}"  Width="100"/>
+                                          DisplayMemberBinding="{Binding Path = Materials.Id}"  Width="100"/>
                             <GridViewColumn Header="Найменування робіт"
-                                          DisplayMemberBinding="{Binding Path = Name}"  Width="191"/>
+                                          DisplayMemberBinding="{Binding Path = Materials.Name}"  Width="191"/>
                             <GridViewColumn Header="Одиниця виміру"
-                                             DisplayMemberBinding="{Binding Path = Measure}" Width="166"/>
+                                             DisplayMemberBinding="{Binding Path = Materials.Measure}" Width="166"/>
                             <GridViewColumn Header="Вартість одиниці"
-                                             DisplayMemberBinding="{Binding Path = UnitPrice}" Width="168"/>
+                                             DisplayMemberBinding="{Binding Path = Materials.UnitPrice}" Width="168"/>
                             <GridViewColumn Header="Кількість"
                                              DisplayMemberBinding="{Binding Path = Count}" Width="120"/>
                             <GridViewColumn Header="Загальна сума"
@@ -37,5 +37,8 @@
                 </ListView>
             </TabItem>
         </TabControl>
+        <StackPanel Grid.Row="1">
+            <Button Content="Назад" Click="Button_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

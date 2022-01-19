@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Сафари.Views.ViewForUsers;
 
 namespace Сафари.Views.ViewForMaterials
 {
@@ -22,6 +23,13 @@ namespace Сафари.Views.ViewForMaterials
         public MaterialsAfterBuyingByUsers()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UserMainWindow userMainWindow = new UserMainWindow();
+            userMainWindow.Show();
+            Hide();
         }
     }
 }

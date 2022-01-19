@@ -42,5 +42,8 @@
                 </ListView>
             </TabItem>
         </TabControl>
+        <StackPanel Grid.Row="1">
+            <Button Content="Назад" Click="Button_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

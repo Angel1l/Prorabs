@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Сафари.Data.MainData;
 using Сафари.ViewModels;
+using Сафари.Views.ViewForUsers;
 
 namespace Сафари.Views.ViewForMaterials
 {
@@ -29,6 +30,20 @@ namespace Сафари.Views.ViewForMaterials
             AllMaterialsView = ViewAllMaterials;
             //SettingMaterialsDataBase settingMaterialsDataBase = new SettingMaterialsDataBase();
             //settingMaterialsDataBase.AddData();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UserMainWindow userMainWindow = new UserMainWindow();
+            userMainWindow.Show();
+            Hide();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MaterialsAfterBuyingByUsers materialsAfterBuyingByUsers = new MaterialsAfterBuyingByUsers();
+            materialsAfterBuyingByUsers.Show();
+            Hide();
         }
     }
 }
