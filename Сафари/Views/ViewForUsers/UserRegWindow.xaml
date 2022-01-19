@@ -13,16 +13,16 @@
                 <DropShadowEffect BlurRadius="11" Color="LightGray" ShadowDepth="0"/>
             </Border.Effect>
             <StackPanel>
-                
-                <TextBlock Text="Здраствуйте" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
+
+                <TextBlock Text="Вітаю" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
                 <Grid Margin="0 0 0 20">
-                    <Button HorizontalAlignment="Right" Content="Войти" Click="Button_Click"/>
+                    <Button HorizontalAlignment="Right" Content="Увійти" Click="Button_Click"/>
                 </Grid>
-                <TextBox x:Name="textBoxLog" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding login}"></TextBox>
-                <PasswordBox x:Name="passBoxPass" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  PasswordChanged="PasswordBox_PasswordChanged"></PasswordBox>
-                <PasswordBox x:Name="passBoxRepitPass" materialDesign:HintAssist.Hint="Повторите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  PasswordChanged="PasswordBox_PasswordChanged2"></PasswordBox>
-                <TextBox x:Name="textBoxEmail" materialDesign:HintAssist.Hint="Введите email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding email}"></TextBox>
-                <Button Content="Зарегистрироватся" Margin="0 20" BorderBrush="#FF494BC8" Background="#FF4258CE" Command="{Binding AddUsersToDatabase}"/>
+                <TextBox x:Name="textBoxLog" materialDesign:HintAssist.Hint="Введіть логін" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding login}"></TextBox>
+                <PasswordBox x:Name="passBoxPass" materialDesign:HintAssist.Hint="Введіть пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  PasswordChanged="PasswordBox_PasswordChanged"></PasswordBox>
+                <PasswordBox x:Name="passBoxRepitPass" materialDesign:HintAssist.Hint="Повторіть пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  PasswordChanged="PasswordBox_PasswordChanged2"></PasswordBox>
+                <TextBox x:Name="textBoxEmail" materialDesign:HintAssist.Hint="Введіть email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding email}"></TextBox>
+                <Button Content="Зареєструватись" Margin="0 20" BorderBrush="#FF494BC8" Background="#FF4258CE" Command="{Binding AddUsersToDatabase}"/>
             </StackPanel>
         </Border>
     </Grid>

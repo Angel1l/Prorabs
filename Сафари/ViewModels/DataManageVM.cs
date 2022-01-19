@@ -38,7 +38,7 @@ namespace Сафари.ViewModels
                 {
                     if(UsersLogin.Length == 0 || UsersPassword.Length == 0)
                     {
-                        MessageBoxResult result = MessageBox.Show("Login or password incorrect");
+                        MessageBoxResult result = MessageBox.Show("Логін або пароль не вірний");
                     }
                     else
                     {
@@ -53,7 +53,7 @@ namespace Сафари.ViewModels
                         }
                         else
                         {
-                            MessageBoxResult result = MessageBox.Show("Login or password incorrect, if have not any account, you should create one");
+                            MessageBoxResult result = MessageBox.Show("Логін або пароль не вірний, створіть аккаунт!");
                         }
                     }
 
