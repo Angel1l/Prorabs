@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Сафари.Views.ViewForMaterials" xmlns:materialsmodels="clr-namespace:Сафари.Data.Models.MaterialsModels" d:DataContext="{d:DesignInstance Type=materialsmodels:CountOfBuyingByUsersMaterials}"
+        xmlns:viewmodels="clr-namespace:Сафари.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:DataManageVM}"
         mc:Ignorable="d"
         Title="MaterialsAfterBuyingByUsers" Height="600" Width="1000">
     <Grid>
@@ -11,25 +12,25 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <TabControl Grid.Column="0">
-            <TabItem Name="MaterialsTab">
+        <TabControl Grid.Column="0" SelectedItem="{Binding SelectedTabItem}">
+            <TabItem Name="MaterialsAfterBuyingByUsersTab">
                 <TabItem.Header>
                     <TextBlock Text="Локальний кошторис"/>
                 </TabItem.Header>
-                <ListView x:Name="ViewAllMaterials" ItemsSource="{Binding AllMaterials}"
-                         SelectedItem="{Binding SelectedMaterial}" >
+                <ListView x:Name="ViewAllMaterials" ItemsSource="{Binding AllForUserMaterials}"
+                         SelectedItem="{Binding SelectedMaterialForUser}" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Айді"
-                                          DisplayMemberBinding="{Binding Path = Materials.Id}"  Width="100"/>
+                                          DisplayMemberBinding="{Binding Path = material.Id}"  Width="100"/>
                             <GridViewColumn Header="Найменування робіт"
-                                          DisplayMemberBinding="{Binding Path = Materials.Name}"  Width="191"/>
+                                          DisplayMemberBinding="{Binding Path = material.Name}"  Width="191"/>
                             <GridViewColumn Header="Одиниця виміру"
-                                             DisplayMemberBinding="{Binding Path = Materials.Measure}" Width="166"/>
+                                             DisplayMemberBinding="{Binding Path = material.Measure}" Width="166"/>
                             <GridViewColumn Header="Вартість одиниці"
-                                             DisplayMemberBinding="{Binding Path = Materials.UnitPrice}" Width="168"/>
+                                             DisplayMemberBinding="{Binding Path = material.UnitPrice}" Width="168"/>
                             <GridViewColumn Header="Кількість"
-                                             DisplayMemberBinding="{Binding Path = Count}" Width="120"/>
+                                             DisplayMemberBinding="{Binding Path = Count }" Width="120"/>
                             <GridViewColumn Header="Загальна сума"
                                              DisplayMemberBinding="{Binding Path = FullPrice}" Width="168"/>
                         </GridView>

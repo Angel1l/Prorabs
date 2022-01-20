@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-D:\C#\GEYCLUB\WPF\Prorabs\Сафари\obj\Debug\net6.0-windows\
+D:\C#\GEYCLUB\WPF\123\Prorabs\Сафари\obj\Debug\net6.0-windows\
 Сафари
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\C#\GEYCLUB\WPF\Prorabs\Сафари\App.xaml
+D:\C#\GEYCLUB\WPF\123\Prorabs\Сафари\App.xaml
 131612014867
 
-3586911688
+361663877171
 216607126416
 MainWindow.xaml;Views\MainUserWindow.xaml;Views\ViewForMaterials\AddNewMaterialsWindow.xaml;Views\ViewForMaterials\BuyMaterialsByUsers.xaml;Views\ViewForMaterials\EditMaterialsWindow.xaml;Views\ViewForMaterials\MaterialsAfterBuyingByUsers.xaml;Views\ViewForMaterials\MaterialsWindow.xaml;Views\ViewForUsers\ShowMessageToUser.xaml;Views\ViewForUsers\UserMainWindow.xaml;Views\ViewForUsers\UserRegWindow.xaml;Views\ViewsForWorkers\AddNewWorkersWindow.xaml;Views\ViewsForWorkers\EditWorkersWindow.xaml;Views\ViewsForWorkers\WorkersWindow.xaml;
 

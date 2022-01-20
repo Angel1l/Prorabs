@@ -16,6 +16,7 @@ namespace Сафари.Views
             DataContext = new DataManageVM();
             //SettingMaterialsDataBase settingMaterialsDataBase = new SettingMaterialsDataBase();
             //settingMaterialsDataBase.AddData();
+            
         }
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {

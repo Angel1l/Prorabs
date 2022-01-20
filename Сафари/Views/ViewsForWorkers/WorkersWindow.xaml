@@ -20,7 +20,6 @@
                     <ContextMenu>
                         <MenuItem Header="Додати" Command="{Binding OpenAddNewWorkersWnd}"/>
                         <MenuItem Header="Видалити" Command="{Binding DeleteEverything}"/>
-                        <MenuItem Header="Редагувати" Command="{Binding OpenEditWorkersWnd}"/>
                     </ContextMenu>
                 </TabItem.ContextMenu>
                 <ListView x:Name="ViewAllWorkers" ItemsSource="{Binding AllWorkers}"

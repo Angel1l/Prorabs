@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Сафари.Commands;
+using Сафари.Data;
 using Сафари.Data.DataWorker;
 using Сафари.Data.Enum;
 using Сафари.Data.MainData;
@@ -49,6 +50,7 @@ namespace Сафари.ViewModels
 
                             UserMainWindow userMainWindow = new UserMainWindow();
                             SetCenterPositionAndOpen(userMainWindow);
+                            
 
                         }
                         else
@@ -60,8 +62,7 @@ namespace Сафари.ViewModels
 
                 }));
             }
-        }
-
+        }      
 
         #endregion
 
@@ -105,6 +106,29 @@ namespace Сафари.ViewModels
         //    get { return _buymaterials; }
         //    set { _buymaterials = value; }
         //}
+
+        public static ResMaterial SelectedMaterialForUser { get; set; }
+
+        private List<ResMaterial> allForUserMaterials = getMaterialsForUser();
+
+        private static List<ResMaterial> getMaterialsForUser()
+        {
+            return DataWorker.GetMaterialForTheUserMaterials();
+        }
+
+        public List<ResMaterial> AllForUserMaterials
+        {
+            get
+            { return allForUserMaterials; }
+            set
+            {
+                allForUserMaterials = value;
+                NotifyPropertyChanged("AllForUserMaterials");
+            }
+        }
+
+
+
 
         private List<Materials> allMaterials = new List<Materials>();
         public List<Materials> AllMaterials 
@@ -413,13 +437,13 @@ namespace Сафари.ViewModels
                     if (SelectedTabItem.Name == "WorkersTab" && SelectedWorkers != null)
                     {
                         resultStr = DataWorker.DeleteWorkers(SelectedWorkers);
-                        UpdateAllMatetialsView();
+                        UpdateAllWorkersView();
                     }
                     if (SelectedTabItem.Name == "MaterialsTab" && SelectedMaterial != null)
                     {
                         resultStr = DataWorker.DeleteMaterials(SelectedMaterial);
                         UpdateAllMatetialsView();
-                    }
+                    }                   
                     SetNullValuesToProperties();
                     ShowMessageToUser(resultStr);
                 }
@@ -608,7 +632,7 @@ namespace Сафари.ViewModels
         #region Обновление Окон       
         private void UpdateAllMatetialsView()
         {
-            //AllMaterials = DataWorker.GetAllMaterials();
+            AllMaterials = DataWorker.GetAllMaterials();
             MaterialsWindow.AllMaterialsView.ItemsSource = null;
             MaterialsWindow.AllMaterialsView.Items.Clear();
             MaterialsWindow.AllMaterialsView.ItemsSource = AllMaterials;

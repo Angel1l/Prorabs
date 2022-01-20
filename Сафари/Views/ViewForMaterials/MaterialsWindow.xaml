@@ -19,6 +19,7 @@
                 <TabItem.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Купити" Command="{Binding BuyMaterials}"/>
+                        
                     </ContextMenu>
                 </TabItem.ContextMenu>
                 <ListView x:Name="ViewAllMaterials" ItemsSource="{Binding AllMaterials}"

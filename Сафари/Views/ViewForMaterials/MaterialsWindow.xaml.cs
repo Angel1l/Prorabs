@@ -22,7 +22,7 @@ namespace Сафари.Views.ViewForMaterials
     /// </summary>
     public partial class MaterialsWindow : Window
     {
-        public static ListView AllMaterialsView;
+        public static ListView AllMaterialsView;       
         public MaterialsWindow()
         {
             InitializeComponent();

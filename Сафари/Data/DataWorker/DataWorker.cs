@@ -7,6 +7,7 @@ using System.Windows;
 using Сафари.Data.MainData;
 using Сафари.Data.Models.MaterialsModels;
 using Сафари.Data.Models.WorkersModels;
+using Сафари.ViewModels;
 using Сафари.ViewModels.ForUsers;
 using Сафари.Views;
 
@@ -113,6 +114,42 @@ namespace Сафари.Data.DataWorker
                 result = "Матеріал" + materials.Name + "відредаговано";
             }
             return result;
+        }
+
+        public static List<ResMaterial> GetMaterialForTheUserMaterials()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var mat = new List<ResMaterial>();
+                try
+                {
+                    var dataMaterial = db.UsersWithMaterials.ToList();
+                    var user = db.Users.Where(u => u.Login == DataManageVM.UsersLogin).FirstOrDefault();
+                    var material = db.Materials.ToList();
+                    foreach (var item in dataMaterial)
+                    {
+                        if (user != null && item.UserId == user.Id)
+                        {
+                            var resMaterial = material.Where(m => m.Id == item.MaterialId).FirstOrDefault();
+                            mat.Add(new ResMaterial()
+                            {
+                                material = resMaterial,
+                                Count = item.Count,
+                                FullPrice = item.Count * resMaterial.UnitPrice
+                            });
+                        }
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    
+                    
+                }
+               
+                return mat; 
+            }
+            
+
         }
         #endregion
         #region +Юзер
