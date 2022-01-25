@@ -10,16 +10,13 @@
     <Compile Update="Views\MainUserWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ViewForMaterials\AddMaterialsByUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ViewForMaterials\AddNewMaterialsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ViewForMaterials\BuyMaterialsByUsers.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\ViewForMaterials\EditMaterialsWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\ViewForMaterials\MaterialsAfterBuyingByUsers.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\ViewForMaterials\MaterialsWindow.xaml.cs">
@@ -51,16 +48,13 @@
     <Page Update="Views\MainUserWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\ViewForMaterials\AddMaterialsByUser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ViewForMaterials\AddNewMaterialsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ViewForMaterials\BuyMaterialsByUsers.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Views\ViewForMaterials\EditMaterialsWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\ViewForMaterials\MaterialsAfterBuyingByUsers.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ViewForMaterials\MaterialsWindow.xaml">

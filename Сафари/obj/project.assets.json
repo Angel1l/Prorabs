@@ -1947,11 +1947,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\GEYCLUB\\WPF\\123\\Prorabs\\Сафари\\Сафари.csproj",
+      "projectUniqueName": "D:\\C#\\GEYCLUB\\WPF\\ProjectWPF\\Сафари\\Сафари.csproj",
       "projectName": "Сафари",
-      "projectPath": "D:\\C#\\GEYCLUB\\WPF\\123\\Prorabs\\Сафари\\Сафари.csproj",
+      "projectPath": "D:\\C#\\GEYCLUB\\WPF\\ProjectWPF\\Сафари\\Сафари.csproj",
       "packagesPath": "C:\\Users\\drach\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\GEYCLUB\\WPF\\123\\Prorabs\\Сафари\\obj\\",
+      "outputPath": "D:\\C#\\GEYCLUB\\WPF\\ProjectWPF\\Сафари\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\drach\\AppData\\Roaming\\NuGet\\NuGet.Config",

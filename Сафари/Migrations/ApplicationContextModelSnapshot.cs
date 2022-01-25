@@ -22,23 +22,6 @@ namespace Сафари.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Сафари.Data.Models.MaterialsModels.CategoryMaterials", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CategoryMaterials");
-                });
-
             modelBuilder.Entity("Сафари.Data.Models.MaterialsModels.Materials", b =>
                 {
                     b.Property<int>("Id")

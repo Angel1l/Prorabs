@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Сафари.ViewModels;
+using Сафари.ViewModels.ForWorkers;
 using Сафари.Views.ViewForUsers;
 
 namespace Сафари.Views.ViewsForWorkers
@@ -25,7 +14,7 @@ namespace Сафари.Views.ViewsForWorkers
         public WorkersWindow()
         {
             InitializeComponent();
-            DataContext = new DataManageVM();
+            DataContext = new WorkersVM();
             AllWorkersView = ViewAllWorkers;
         }
 

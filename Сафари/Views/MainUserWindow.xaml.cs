@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using Сафари.ViewModels;
+using Сафари.ViewModels.ForUsers;
 using Сафари.Views.ViewForUsers;
 
 namespace Сафари.Views
@@ -13,10 +14,7 @@ namespace Сафари.Views
         public MainUserWindow()
         {
             InitializeComponent();
-            DataContext = new DataManageVM();
-            //SettingMaterialsDataBase settingMaterialsDataBase = new SettingMaterialsDataBase();
-            //settingMaterialsDataBase.AddData();
-            
+            DataContext = new UsersVM();                       
         }
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {

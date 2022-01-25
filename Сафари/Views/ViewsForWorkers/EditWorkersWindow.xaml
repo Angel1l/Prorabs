@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Сафари.Views.ViewsForWorkers" xmlns:viewmodels="clr-namespace:Сафари.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DataManageVM}"
+        xmlns:local="clr-namespace:Сафари.Views.ViewsForWorkers" xmlns:viewmodels="clr-namespace:Сафари.ViewModels" xmlns:forworkers="clr-namespace:Сафари.ViewModels.ForWorkers" d:DataContext="{d:DesignInstance Type=forworkers:WorkersVM}"
         mc:Ignorable="d"
         Name="EditWorkersWnd"
         Title="EditWorkersWindow" Height="300" Width="300">

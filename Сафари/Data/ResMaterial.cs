@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Сафари.Data.Models.MaterialsModels;
+﻿using Сафари.Data.Models.MaterialsModels;
 
 namespace Сафари.Data
 {

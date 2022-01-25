@@ -3,88 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Сафари.Views.ViewForMaterials" xmlns:forusers="clr-namespace:Сафари.ViewModels.ForUsers" xmlns:viewmodels="clr-namespace:Сафари.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DataManageVM}"
+        xmlns:formaterials="clr-namespace:Сафари.ViewModels.ForMaterials" d:DataContext="{d:DesignInstance Type=formaterials:MaterialsVM}"
         mc:Ignorable="d"
         Title="MaterialsWindow" Height="600" Width="900">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TabControl Grid.Column="2" SelectedItem="{Binding SelectedTabItem}">
+
+        <TabControl SelectedItem="{Binding SelectedTabItem}">
             <TabItem Name="MaterialsTab">
                 <TabItem.Header>
                     <TextBlock Text="Локальний кошторис"/>
                 </TabItem.Header>
                 <TabItem.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Купити" Command="{Binding BuyMaterials}"/>
-                        
+                        <MenuItem Header="Розрахувати" Command="{Binding BuyMaterials}"/>
+                        <MenuItem Header="Додати" Command="{Binding OpenAddNewMaterialsWnd}"/>
+                        <MenuItem Header="Видалити" Command="{Binding DeleteMaterials}"/>
+                        <MenuItem Header="Змінити" Command="{Binding OpenEditMaterialsWnd}"/>
+
                     </ContextMenu>
                 </TabItem.ContextMenu>
-                <ListView x:Name="ViewAllMaterials" ItemsSource="{Binding AllMaterials}"
-                         SelectedItem="{Binding SelectedMaterial}" >
+                <ListView x:Name="ViewAllMaterials" ItemsSource="{Binding AllForUserMaterials}"
+                         SelectedItem="{Binding SelectedMaterialForUser}" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Айді"
-                                          DisplayMemberBinding="{Binding Path = Id}"  Width="100"/>
+                                          DisplayMemberBinding="{Binding Id}"  Width="100"/>
                             <GridViewColumn Header="Найменування робіт"
-                                          DisplayMemberBinding="{Binding Path = Name}"  Width="191"/>
+                                          DisplayMemberBinding="{Binding Name}"  Width="191"/>
                             <GridViewColumn Header="Одиниця виміру"
-                                             DisplayMemberBinding="{Binding Path = Measure}" Width="166"/>
+                                             DisplayMemberBinding="{Binding Measure}" Width="166"/>
                             <GridViewColumn Header="Вартість одиниці"
-                                             DisplayMemberBinding="{Binding Path = UnitPrice}" Width="168"/>
+                                             DisplayMemberBinding="{Binding UnitPrice}" Width="168"/>
+                            <GridViewColumn Header="Кількість"
+                                             DisplayMemberBinding="{Binding Path = Count }" Width="120"/>
+                            <GridViewColumn Header="Загальна сума"
+                                             DisplayMemberBinding="{Binding Path = FullPrice}" Width="168"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
             </TabItem>
         </TabControl>
-        <StackPanel Grid.Row="0">
-            <Button Margin="10"  Command="{Binding AllButtonMaterial}">
-                <Grid Width="150">
-                    <TextBlock HorizontalAlignment="Center" Text="Всі матеріали" FontFamily="Champagne &amp; Limousines"/>
-                </Grid>
-            </Button>
-            <Button Margin="10" Command="{Binding MaterialsForWalls}">
-                <Grid Width="150">
-                    <TextBlock HorizontalAlignment="Center" Text="Матеріал для стін" FontFamily="Champagne &amp; Limousines"/>
-                </Grid>
-            </Button>
-            <Button Margin="10" Command="{Binding MaterialsForRoofing}">
-                <Grid Width="170">
-                    <TextBlock HorizontalAlignment="Center" Text="Матеріал для даху" FontFamily="Champagne &amp; Limousines"/>
-                </Grid>
-            </Button>
-            <Button Margin="10" Command="{Binding MaterialsForFoundation}">
-                <Grid Width="170">
-                    <TextBlock HorizontalAlignment="Center" Text="Матеріал для фундаменту" FontFamily="Champagne &amp; Limousines"/>
-                </Grid>
-            </Button>
-            <Button Margin="10" Command="{Binding MaterialsForFloor}">
-                <Grid Width="150">
-                    <TextBlock HorizontalAlignment="Center" Text="Матеріал для підлоги" FontFamily="Champagne &amp; Limousines"/>
-                </Grid>
-            </Button>
-            <Button Margin="10" Command="{Binding MaterialsForCeilings}">
-                <Grid Width="150">
-                    <TextBlock HorizontalAlignment="Center" Text="Матеріал для стелі" FontFamily="Champagne &amp; Limousines"/>
-                </Grid>
-            </Button>
-            <Button Margin="10" Command="{Binding OpenWorkersWindowWnd}">
-                <Grid Width="150">
-                    <TextBlock HorizontalAlignment="Center" Text="Працівники" FontFamily="Champagne &amp; Limousines"/>
-                </Grid>
-            </Button>
-            <Button Margin="30" Click="Button_Click_1">
-                <Grid Width="150">
-                    <TextBlock HorizontalAlignment="Center" Text="Куплені матеріали" FontFamily="Champagne &amp; Limousines"/>
-                </Grid>
-            </Button>
-            <Button Margin="30" Click="Button_Click">
-                <Grid Width="150">
-                    <TextBlock HorizontalAlignment="Center" Text="Назад" FontFamily="Champagne &amp; Limousines"/>
-                </Grid>
-            </Button>
-        </StackPanel>
     </Grid>
 </Window>

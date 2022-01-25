@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Сафари.Views.ViewForMaterials" xmlns:viewmodels="clr-namespace:Сафари.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DataManageVM}"
+        xmlns:local="clr-namespace:Сафари.Views.ViewForMaterials" xmlns:viewmodels="clr-namespace:Сафари.ViewModels" xmlns:formaterials="clr-namespace:Сафари.ViewModels.ForMaterials" d:DataContext="{d:DesignInstance Type=formaterials:MaterialsVM}"
         mc:Ignorable="d"
         Title="EditMaterialsWindow" Height="300" Width="300">
     <Grid>
@@ -21,12 +21,9 @@
             <TextBox Name="EdIzmBlock" Text="{Binding MaterialsMeasure}"/>
             <TextBlock Text="Нова Поточна ціна за одиницю"/>
             <TextBox Name="PriceZaShtukuBlock" Text="{Binding MaterialsUnitPrice}"/>
-            <TextBlock Text="Новый Вид матеріалу"/>
-            <ComboBox ItemsSource="{Binding AllCategoryMaterials}"
-                      />
         </StackPanel>
-        <Button Grid.Row="1" Content="Змінити" Command=""
-                CommandParameter=""/>
+        <Button Grid.Row="1" Content="Змінити" Command="{Binding EditMaterials}"
+                CommandParameter="{Binding ElementName=EditMaterialsWindow}"/>
 
     </Grid>
 </Window>
