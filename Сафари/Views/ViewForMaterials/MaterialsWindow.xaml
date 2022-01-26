@@ -15,15 +15,13 @@
                 </TabItem.Header>
                 <TabItem.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Розрахувати" Command="{Binding BuyMaterials}"/>
                         <MenuItem Header="Додати" Command="{Binding OpenAddNewMaterialsWnd}"/>
                         <MenuItem Header="Видалити" Command="{Binding DeleteMaterials}"/>
                         <MenuItem Header="Змінити" Command="{Binding OpenEditMaterialsWnd}"/>
-
                     </ContextMenu>
                 </TabItem.ContextMenu>
-                <ListView x:Name="ViewAllMaterials" ItemsSource="{Binding AllForUserMaterials}"
-                         SelectedItem="{Binding SelectedMaterialForUser}" >
+                <ListView x:Name="ViewAllMaterials" ItemsSource="{Binding AllMaterials }"
+                         SelectedItem="{Binding SelectedMaterials }" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Айді"
@@ -35,9 +33,9 @@
                             <GridViewColumn Header="Вартість одиниці"
                                              DisplayMemberBinding="{Binding UnitPrice}" Width="168"/>
                             <GridViewColumn Header="Кількість"
-                                             DisplayMemberBinding="{Binding Path = Count }" Width="120"/>
+                                             DisplayMemberBinding="{Binding  Count }" Width="120"/>
                             <GridViewColumn Header="Загальна сума"
-                                             DisplayMemberBinding="{Binding Path = FullPrice}" Width="168"/>
+                                             DisplayMemberBinding="{Binding FullPrice}" Width="168"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

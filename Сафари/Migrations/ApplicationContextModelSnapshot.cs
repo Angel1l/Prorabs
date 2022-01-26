@@ -33,6 +33,12 @@ namespace Сафари.Migrations
                     b.Property<int>("CategoryMaterialsId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FullPrice")
+                        .HasColumnType("int");
+
                     b.Property<string>("Measure")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

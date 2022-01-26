@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\C#\GEYCLUB\WPF\ProjectWPF\Сафари\obj\Debug\net6.0-windows\
+D:\C#\GEYCLUB\WPF\Prorabs (5)\Prorabs\Сафари\obj\Debug\net6.0-windows\
 Сафари
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\C#\GEYCLUB\WPF\ProjectWPF\Сафари\App.xaml
-12-1493202358
+D:\C#\GEYCLUB\WPF\Prorabs (5)\Prorabs\Сафари\App.xaml
+11-955130415
 
-38703715896
+33430470064
 216607126416
-MainWindow.xaml;Views\MainUserWindow.xaml;Views\ViewForMaterials\AddMaterialsByUser.xaml;Views\ViewForMaterials\AddNewMaterialsWindow.xaml;Views\ViewForMaterials\EditMaterialsWindow.xaml;Views\ViewForMaterials\MaterialsWindow.xaml;Views\ViewForUsers\ShowMessageToUser.xaml;Views\ViewForUsers\UserMainWindow.xaml;Views\ViewForUsers\UserRegWindow.xaml;Views\ViewsForWorkers\AddNewWorkersWindow.xaml;Views\ViewsForWorkers\EditWorkersWindow.xaml;Views\ViewsForWorkers\WorkersWindow.xaml;
+MainWindow.xaml;Views\MainUserWindow.xaml;Views\ViewForMaterials\AddNewMaterialsWindow.xaml;Views\ViewForMaterials\EditMaterialsWindow.xaml;Views\ViewForMaterials\MaterialsWindow.xaml;Views\ViewForUsers\ShowMessageToUser.xaml;Views\ViewForUsers\UserMainWindow.xaml;Views\ViewForUsers\UserRegWindow.xaml;Views\ViewsForWorkers\AddNewWorkersWindow.xaml;Views\ViewsForWorkers\EditWorkersWindow.xaml;Views\ViewsForWorkers\WorkersWindow.xaml;
 
 False
 

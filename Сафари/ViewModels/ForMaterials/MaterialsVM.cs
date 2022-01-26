@@ -15,11 +15,21 @@ namespace Сафари.ViewModels.ForMaterials
     {
         public string MaterialsName { get; set; }
         public string MaterialsMeasure { get; set; }
-        public int MaterialsUnitPrice { get; set; }       
-        public static Materials SelectedMaterial { get; set; }
+        public int MaterialsUnitPrice { get; set; }
+        public int MaterialsCount { get; set; }
+        public int MaterialsFullPrice { get; set; }
+        public static Materials SelectedMaterials { get; set; }
 
+        public void UpdateAllMaterialsView()
+        {
+            AllMaterials = DataMaterials.GetAllMaterials();
+            MaterialsWindow.AllMaterialsView.ItemsSource = null;
+            MaterialsWindow.AllMaterialsView.Items.Clear();
+            MaterialsWindow.AllMaterialsView.ItemsSource = AllMaterials;
+            MaterialsWindow.AllMaterialsView.Items.Refresh();
+        }
 
-        private List<Materials> allMaterials = new List<Materials>();
+        private List<Materials> allMaterials = DataMaterials.GetAllMaterials();
         public List<Materials> AllMaterials
         {
             get
@@ -27,23 +37,16 @@ namespace Сафари.ViewModels.ForMaterials
             set
             {
                 allMaterials = value;
-                NotifyPropertyChanged("AllMaterials");
+                NotifyPropertyChanged("AllWorkers");
             }
         }
-        private List<ResMaterial> allForUserMaterials = getMaterialsForUser();
-        public List<ResMaterial> AllForUserMaterials
+        public void SetNullValuesToMaterials()
         {
-            get
-            { return allForUserMaterials; }
-            set
-            {
-                allForUserMaterials = value;
-                NotifyPropertyChanged("AllForUserMaterials");
-            }
-        }
-        private static List<ResMaterial> getMaterialsForUser()
-        {
-            return DataMaterials.GetMaterialForTheUserMaterials();
+            MaterialsName = null;
+            MaterialsMeasure = null;
+            MaterialsUnitPrice = 0;
+            MaterialsCount = 0;
+            MaterialsFullPrice = 0;
         }
         private RelayCommand openAddNewMaterialsWnd;
         public RelayCommand OpenAddNewMaterialsWnd
@@ -62,21 +65,6 @@ namespace Сафари.ViewModels.ForMaterials
             AddNewMaterialsWindow newMaterialsWindow = new AddNewMaterialsWindow();
             SetCenterPositionAndOpen(newMaterialsWindow);
         }
-        public void UpdateAllMatetialsView()
-        {
-            AllMaterials = DataMaterials.GetAllMaterials();
-            MaterialsWindow.AllMaterialsView.ItemsSource = null;
-            MaterialsWindow.AllMaterialsView.Items.Clear();
-            MaterialsWindow.AllMaterialsView.ItemsSource = AllMaterials;
-            MaterialsWindow.AllMaterialsView.Items.Refresh();
-        }
-        public void SetNullValuesToMaterials()
-        {
-            //
-            MaterialsName = null;
-            MaterialsMeasure = null;
-            MaterialsUnitPrice = 0;
-        }
         private RelayCommand addNewMaterials;
         public RelayCommand AddNewMaterials
         {
@@ -88,25 +76,28 @@ namespace Сафари.ViewModels.ForMaterials
                     string resultStr = "";
                     if (MaterialsName == null || MaterialsName.Replace(" ", "").Length == 0)
                     {
-                        SetRedBlockControll(wnd, "NaimenovanieBlock");
+                        SetRedBlockControll(wnd, "MaterialsNameBlock");
                     }
                     if (MaterialsMeasure == null)
                     {
-                        SetRedBlockControll(wnd, "MeasureBlock");
+                        SetRedBlockControll(wnd, "MaterialsMeasureBlock");
                     }
                     if (MaterialsUnitPrice == 0)
                     {
-                        SetRedBlockControll(wnd, "UnitPriceBlock");
-                    }                    
+                        SetRedBlockControll(wnd, "MaterialsUnitPriceBlock");
+                    }
+                    if (MaterialsCount == 0)
+                    {
+                        SetRedBlockControll(wnd, "MaterialsCountBlock");
+                    }
                     else
                     {
-                        resultStr = DataMaterials.CreateMaterials(MaterialsName, MaterialsMeasure, MaterialsUnitPrice);
+                        resultStr = DataMaterials.CreateMaterials(MaterialsName, MaterialsMeasure, MaterialsUnitPrice, MaterialsCount, MaterialsFullPrice);
                         ShowMessageToUser(resultStr);
-                        UpdateAllMatetialsView();
+                        UpdateAllMaterialsView();
                         SetNullValuesToMaterials();
                         wnd.Close();
                     }
-
                 }
                 );
             }
@@ -120,11 +111,10 @@ namespace Сафари.ViewModels.ForMaterials
                 {
                     Window wnd = obj as Window;
                     string resultStr = "Не вибраний співробітник";
-                    string nocategory = "";
-                    if (SelectedMaterial != null)
+                    if (SelectedMaterials != null)
                     {
-                        resultStr = DataMaterials.EditMaterials(SelectedMaterial, MaterialsName, MaterialsMeasure, MaterialsUnitPrice);
-                        UpdateAllMatetialsView();
+                        resultStr = DataMaterials.EditMaterials(SelectedMaterials, MaterialsName, MaterialsMeasure, MaterialsUnitPrice, MaterialsCount, MaterialsFullPrice);
+                        UpdateAllMaterialsView();
                         SetNullValuesToMaterials();
                         ShowMessageToUser(resultStr);
                         wnd.Close();
@@ -158,38 +148,16 @@ namespace Сафари.ViewModels.ForMaterials
             {
                 return deleteMaterials ?? new RelayCommand(obj =>
                 {
-                    string resultStr = "Не вибраний співробітник";
-                    if (SelectedTabItem.Name == "MaterialsTab" && SelectedMaterial != null)
+                    string resultStr = "Не вибраний матеріал";
+                    if (SelectedTabItem.Name == "MaterialsTab" && SelectedMaterials != null)
                     {
-                        resultStr = DataMaterials.DeleteMaterials(SelectedMaterial);
-                        UpdateAllMatetialsView();
+                        resultStr = DataMaterials.DeleteMaterials(SelectedMaterials);
+                        UpdateAllMaterialsView();
                     }
                 }
                 );
             }
         }
-        public static SideProperties _dataManageVM = new SideProperties();
-        public static string UsersLogin { get; set; }
-
-        private RelayCommand buyMaterials;
-        public RelayCommand BuyMaterials
-        {
-            get
-            {
-                return buyMaterials ?? (new RelayCommand(obj =>
-                {
-                    _dataManageVM.SetCenterPositionAndOpen(new AddMaterialsByUser());
-
-                    using (ApplicationContext db = new ApplicationContext())
-                    {
-                        var user = db.Users.Where(u => u.Login == UsersLogin).FirstOrDefault();
-
-                        db.UsersWithMaterials.Add(new UsersWithMaterials(user.Id, SelectedMaterial.Id, int.Parse(CountOfBuyingByUsersMaterials.count)));
-                        db.SaveChanges();
-                    }
-                }));
-            }
-        }
-        public static ResMaterial SelectedMaterialForUser { get; set; }
     }
+
 }

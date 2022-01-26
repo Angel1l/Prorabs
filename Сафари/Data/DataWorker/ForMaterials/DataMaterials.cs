@@ -4,7 +4,8 @@ using System.Linq;
 using Сафари.Commands;
 using Сафари.Data.MainData;
 using Сафари.Data.Models.MaterialsModels;
-using Сафари.ViewModels.ForUsersWithMaterials;
+using Сафари.ViewModels.ForUsers;
+
 
 namespace Сафари.Data.DataWorker.ForMaterials
 {
@@ -12,7 +13,6 @@ namespace Сафари.Data.DataWorker.ForMaterials
     {
         public static List<Materials> GetAllMaterials()
         {
-
             using (ApplicationContext db = new ApplicationContext())
             {
                 var result = db.Materials.ToList();
@@ -20,19 +20,21 @@ namespace Сафари.Data.DataWorker.ForMaterials
             }
         }
 
-        public static string CreateMaterials(string name, string measure, int unitPrice)
+        public static string CreateMaterials(string materialsName, string materialsMeasure, int materialsUnitPrice, int materialsCount, int materialsFullPrice)
         {
-            string result = "Успішно!";
+            string result = "Успешно!";
             using (ApplicationContext db = new ApplicationContext())
             {
-                bool checkIsExist = db.Materials.Any(el => el.Name == name && el.Measure == measure && el.UnitPrice == unitPrice);
-                if (checkIsExist)
+                bool checkIsExist = db.Materials.Any(el => el.Name == materialsName && el.Measure == materialsMeasure && el.UnitPrice == materialsUnitPrice && el.Count == materialsCount && el.FullPrice == materialsFullPrice);
+                if (!checkIsExist)
                 {
-                    Materials newmaterials = new Materials();
+                    Materials newmaterials = new Materials
                     {
-                        newmaterials.Name = name;
-                        newmaterials.Measure = measure;
-                        newmaterials.UnitPrice = unitPrice;                      
+                        Name = materialsName,
+                        Measure = materialsMeasure,
+                        UnitPrice = materialsUnitPrice,
+                        Count = materialsCount,
+                        FullPrice = materialsCount * materialsUnitPrice
                     };
                     db.Materials.Add(newmaterials);
                     db.SaveChanges();
@@ -40,66 +42,34 @@ namespace Сафари.Data.DataWorker.ForMaterials
                 return result;
             }
         }
-        public static List<ResMaterial> GetMaterialForTheUserMaterials()
+
+        public static string EditMaterials(Materials oldmaterials, string newmaterialsName, string newmaterialsMeasure, int newmaterialsUnitPrice, int newmaterialsCount, int newmaterialsFullPrice)
         {
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                var mat = new List<ResMaterial>();
-                try
-                {
-                    var dataMaterial = db.UsersWithMaterials.ToList();
-                    var user = db.Users.Where(u => u.Login == UsersWithMaterialsVM.UsersLogin).FirstOrDefault();
-                    var material = db.Materials.ToList();
-                    foreach (var item in dataMaterial)
-                    {
-                        if (user != null && item.UserId == user.Id)
-                        {
-                            var resMaterial = material.Where(m => m.Id == item.MaterialId).FirstOrDefault();
-                            mat.Add(new ResMaterial()
-                            {
-                                material = resMaterial,
-                                Count = item.Count,
-                                FullPrice = item.Count * resMaterial.UnitPrice
-                            });
-                        }
-                    }
-                }
-                catch (NullReferenceException)
-                {
-
-
-                }
-
-                return mat;
-            }
-        }
-        public static string DeleteMaterials(Materials materials)
-        {
-
-            string result = "Такого материала не существует";
-            using (ApplicationContext db = new ApplicationContext())
-            {
-                db.Materials.Remove(materials);
-                db.SaveChanges();
-                result = "Матеріал" + materials.Name + "видалений";
-            }
-            return result;
-        }
-
-        public static string EditMaterials(Materials oldmaterials, string newname, string newmeasure, int newunitPrice)
-        {           
             string result = "Такого матеріалу не існує";
             using (ApplicationContext db = new ApplicationContext())
             {
                 Materials materials = db.Materials.FirstOrDefault(b => b.Id == oldmaterials.Id);
-                materials.Name = newname;
-                materials.Measure = newmeasure;
-                materials.UnitPrice = newunitPrice;                
+                materials.Name = newmaterialsName;
+                materials.Measure = newmaterialsMeasure;
+                materials.UnitPrice = newmaterialsUnitPrice;
+                materials.Count = newmaterialsCount;
+                materials.FullPrice = newmaterialsCount * newmaterialsUnitPrice;
                 db.SaveChanges();
-                result = "Матеріал" + materials.Name + "відредаговано";
+                result = "Матеріал  " + materials.Name + "  відредагован";
             }
             return result;
         }
-       
+
+        public static string DeleteMaterials(Materials materials)
+        {
+            string result = "Такого работника не существует";
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                db.Materials.Remove(materials);
+                db.SaveChanges();
+                result = "Матеріал " + materials.Name + " видалений";
+            }
+            return result;
         }
+    }
 }

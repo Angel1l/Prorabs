@@ -32,18 +32,18 @@ namespace Сафари.ViewModels.ForWindows
                     );
             }
         }
-        private RelayCommand openEditMaterialsWnd;
-        public RelayCommand OpenEditMaterialsWnd
-        {
-            get
-            {
-                return openEditMaterialsWnd ?? new RelayCommand(obj =>
-                {
-                    OpenEditMaterialsWindowMethod();
-                }
-                    );
-            }
-        }
+        //private RelayCommand openEditMaterialsWnd;
+        //public RelayCommand OpenEditMaterialsWnd
+        //{
+        //    get
+        //    {
+        //        return openEditMaterialsWnd ?? new RelayCommand(obj =>
+        //        {
+        //            OpenEditMaterialsWindowMethod();
+        //        }
+        //            );
+        //    }
+        //}
         //private RelayCommand openAddNewWorkersWnd;
         //public RelayCommand OpenAddNewWorkersWnd
         //{
@@ -109,11 +109,11 @@ namespace Сафари.ViewModels.ForWindows
             AddNewMaterialsWindow newMaterialsWindow = new AddNewMaterialsWindow();
             SetCenterPositionAndOpen(newMaterialsWindow);
         }
-        private void OpenEditMaterialsWindowMethod()
-        {
-            EditMaterialsWindow editMaterialsWindow = new EditMaterialsWindow();
-            SetCenterPositionAndOpen(editMaterialsWindow);
-        }
+        //private void OpenEditMaterialsWindowMethod()
+        //{
+        //    EditMaterialsWindow editMaterialsWindow = new EditMaterialsWindow();
+        //    SetCenterPositionAndOpen(editMaterialsWindow);
+        //}
         private void OpenAddWorkersWindowMethod()
         {
             AddNewWorkersWindow newWorkersWindow = new AddNewWorkersWindow();

@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Сафари.Views.ViewForMaterials" xmlns:viewmodels="clr-namespace:Сафари.ViewModels" xmlns:formaterials="clr-namespace:Сафари.ViewModels.ForMaterials" d:DataContext="{d:DesignInstance Type=formaterials:MaterialsVM}"
+        xmlns:local="clr-namespace:Сафари.Views.ViewForMaterials" xmlns:formaterials="clr-namespace:Сафари.ViewModels.ForMaterials" d:DataContext="{d:DesignInstance Type=formaterials:MaterialsVM}"
         mc:Ignorable="d"
+        Name="EditMaterialsWnd"
         Title="EditMaterialsWindow" Height="300" Width="300">
     <Grid>
         <Grid.RowDefinitions>
@@ -15,15 +16,18 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Width="200">
-            <TextBlock Text="Нове Найменування"/>
-            <TextBox Name="NaimenovanieBlock" Text="{Binding MaterialsName}"/>
+            <TextBlock Text="Нова Найменування робіт"/>
+            <TextBox Text="{Binding MaterialsName}"/>
             <TextBlock Text="Нова Одиниця виміру"/>
-            <TextBox Name="EdIzmBlock" Text="{Binding MaterialsMeasure}"/>
-            <TextBlock Text="Нова Поточна ціна за одиницю"/>
-            <TextBox Name="PriceZaShtukuBlock" Text="{Binding MaterialsUnitPrice}"/>
+            <TextBox Text="{Binding MaterialsMeasure}"/>
+            <TextBlock Text="Нова Вартість одиниці"/>
+            <TextBox Text="{Binding MaterialsUnitPrice}"/>
+            <TextBlock Text="Нова Кількість"/>
+            <TextBox Text="{Binding MaterialsCount}"/>
         </StackPanel>
-        <Button Grid.Row="1" Content="Змінити" Command="{Binding EditMaterials}"
-                CommandParameter="{Binding ElementName=EditMaterialsWindow}"/>
+        <Button Grid.Row="1" Content="Редагувати"
+                Command="{Binding EditMaterials}"
+                CommandParameter="{Binding ElementName=EditMaterialsWnd}"/>
 
     </Grid>
 </Window>
