@@ -5,6 +5,7 @@ using Сафари.Commands;
 using Сафари.Data;
 using Сафари.Data.DataWorker.ForMaterials;
 using Сафари.Data.MainData;
+using Сафари.Data.Models.CountModels;
 using Сафари.Data.Models.MaterialsModels;
 using Сафари.ViewModels.MainModels;
 using Сафари.Views.ViewForMaterials;
@@ -101,7 +102,7 @@ namespace Сафари.ViewModels.ForMaterials
                 }
                 );
             }
-        }
+        }        
         private RelayCommand editMaterials;
         public RelayCommand EditMaterials
         {
@@ -158,6 +159,40 @@ namespace Сафари.ViewModels.ForMaterials
                 );
             }
         }
-    }
+        public static MaterialsVM _dataManageVM = new MaterialsVM();
+        private RelayCommand buyMaterials;
+        public RelayCommand BuyMaterials
+        {
+            get
+            {
+                return buyMaterials ?? (new RelayCommand(obj =>
+                {
+                    _dataManageVM.SetCenterPositionAndOpen(new CountWindow());
 
+                    using (ApplicationContext db = new ApplicationContext())
+                    {
+                        db.UsersWithMaterials.Add(new UsersWithMaterials(int.Parse(CountOfBuyingByUsersMaterials.count)));
+                        db.SaveChanges();
+                    }
+                }));
+            }
+        }
+        private RelayCommand openCountWnd;
+        public RelayCommand OpenCountWnd
+        {
+            get
+            {
+                return openCountWnd ?? new RelayCommand(obj =>
+                {
+                    OpenAddCountMethod();
+                }
+                    );
+            }
+        }
+        private void OpenAddCountMethod()
+        {
+            CountWindow newCountWindow = new CountWindow();
+            SetCenterPositionAndOpen(newCountWindow);
+        }
+    }
 }

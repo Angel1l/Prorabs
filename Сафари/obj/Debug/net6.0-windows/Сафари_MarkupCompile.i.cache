@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\C#\GEYCLUB\WPF\Prorabs (5)\Prorabs\Сафари\App.xaml
-11-955130415
+12606729339
 
-35-1158267768
+38102454763
 216607126416
-MainWindow.xaml;Views\MainUserWindow.xaml;Views\ViewForMaterials\AddNewMaterialsWindow.xaml;Views\ViewForMaterials\EditMaterialsWindow.xaml;Views\ViewForMaterials\MaterialsWindow.xaml;Views\ViewForUsers\ShowMessageToUser.xaml;Views\ViewForUsers\UserMainWindow.xaml;Views\ViewForUsers\UserRegWindow.xaml;Views\ViewsForWorkers\AddNewWorkersWindow.xaml;Views\ViewsForWorkers\EditWorkersWindow.xaml;Views\ViewsForWorkers\WorkersWindow.xaml;
+MainWindow.xaml;Views\MainUserWindow.xaml;Views\ViewForMaterials\AddNewMaterialsWindow.xaml;Views\ViewForMaterials\CountWindow.xaml;Views\ViewForMaterials\EditMaterialsWindow.xaml;Views\ViewForMaterials\MaterialsWindow.xaml;Views\ViewForUsers\ShowMessageToUser.xaml;Views\ViewForUsers\UserMainWindow.xaml;Views\ViewForUsers\UserRegWindow.xaml;Views\ViewsForWorkers\AddNewWorkersWindow.xaml;Views\ViewsForWorkers\EditWorkersWindow.xaml;Views\ViewsForWorkers\WorkersWindow.xaml;
 
 True
 

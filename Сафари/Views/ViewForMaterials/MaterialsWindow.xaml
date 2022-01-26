@@ -3,18 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:formaterials="clr-namespace:Сафари.ViewModels.ForMaterials" d:DataContext="{d:DesignInstance Type=formaterials:MaterialsVM}"
+        xmlns:formaterials="clr-namespace:Сафари.ViewModels.ForMaterials" xmlns:mainmodels="clr-namespace:Сафари.ViewModels.MainModels" d:DataContext="{d:DesignInstance Type=formaterials:MaterialsVM}"
         mc:Ignorable="d"
         Title="MaterialsWindow" Height="600" Width="900">
     <Grid>
-
-        <TabControl SelectedItem="{Binding SelectedTabItem}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" SelectedItem="{Binding SelectedTabItem}">
             <TabItem Name="MaterialsTab">
                 <TabItem.Header>
                     <TextBlock Text="Локальний кошторис"/>
                 </TabItem.Header>
                 <TabItem.ContextMenu>
                     <ContextMenu>
+                        <MenuItem Header="SCH" Command="{Binding OpenCountWnd}"/>
                         <MenuItem Header="Додати" Command="{Binding OpenAddNewMaterialsWnd}"/>
                         <MenuItem Header="Видалити" Command="{Binding DeleteMaterials}"/>
                         <MenuItem Header="Змінити" Command="{Binding OpenEditMaterialsWnd}"/>
@@ -41,5 +45,8 @@
                 </ListView>
             </TabItem>
         </TabControl>
+        <StackPanel Grid.Row="1">
+            <Button Content="Назад" Click="Button_Click_1"/>
+        </StackPanel>
     </Grid>
 </Window>

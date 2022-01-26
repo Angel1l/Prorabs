@@ -62,7 +62,7 @@ namespace Сафари.Views.ViewForMaterials {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Сафари;V1.0.0.0;component/views/viewformaterials/editmaterialswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Сафари;component/views/viewformaterials/editmaterialswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\ViewForMaterials\EditMaterialsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Сафари",
-    "\\Сафари\\ViewModels"
+    "\\Сафари\\ViewModels",
+    "\\Сафари\\Views",
+    "\\Сафари\\Views\\ViewForMaterials"
   ],
-  "SelectedNode": "\\Bastion.sln",
   "PreviewInSolutionExplorer": false
 }

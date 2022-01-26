@@ -18,13 +18,12 @@ namespace Сафари.Views.ViewForMaterials
             AllMaterialsView = ViewAllMaterials;
             //SettingMaterialsDataBase settingMaterialsDataBase = new SettingMaterialsDataBase();
             //settingMaterialsDataBase.AddData();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        }     
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             UserMainWindow userMainWindow = new UserMainWindow();
             userMainWindow.Show();
             Hide();
-        }        
+        }
     }
 }

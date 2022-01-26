@@ -552,3 +552,5 @@ D:\C#\GEYCLUB\WPF\Prorabs (5)\Prorabs\Сафари\obj\Debug\net6.0-windows\Са
 D:\C#\GEYCLUB\WPF\Prorabs (5)\Prorabs\Сафари\obj\Debug\net6.0-windows\Сафари.genruntimeconfig.cache
 D:\C#\GEYCLUB\WPF\Prorabs (5)\Prorabs\Сафари\obj\Debug\net6.0-windows\Views\ViewForMaterials\EditMaterialsWindow.g.cs
 D:\C#\GEYCLUB\WPF\Prorabs (5)\Prorabs\Сафари\obj\Debug\net6.0-windows\Views\ViewForMaterials\EditMaterialsWindow.baml
+D:\C#\GEYCLUB\WPF\Prorabs (5)\Prorabs\Сафари\obj\Debug\net6.0-windows\Views\ViewForMaterials\CountWindow.g.cs
+D:\C#\GEYCLUB\WPF\Prorabs (5)\Prorabs\Сафари\obj\Debug\net6.0-windows\Views\ViewForMaterials\CountWindow.baml

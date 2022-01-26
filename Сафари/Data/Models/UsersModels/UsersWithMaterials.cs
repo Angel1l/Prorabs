@@ -15,10 +15,8 @@ namespace Сафари.Data.Models.MaterialsModels
 
         }
 
-        public UsersWithMaterials(int userid, int materialid, int count)
-        {
-            UserId = userid;
-            MaterialId = materialid;
+        public UsersWithMaterials( int count)
+        {            
             Count = count;
             DatePurchase = DateTime.Now;
         }
