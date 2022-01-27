@@ -36,8 +36,7 @@ namespace Сафари.Data.DataWorker.ForUsers
 
                 MessageBoxResult result = MessageBox.Show("Успішно!");
 
-            }
-            
+            }            
         }
     }
 }

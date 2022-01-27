@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using Сафари.Commands;
-using Сафари.Data;
 using Сафари.Data.DataWorker.ForMaterials;
 using Сафари.Data.MainData;
-using Сафари.Data.Models.CountModels;
 using Сафари.Data.Models.MaterialsModels;
 using Сафари.ViewModels.MainModels;
 using Сафари.Views.ViewForMaterials;
@@ -14,10 +11,10 @@ namespace Сафари.ViewModels.ForMaterials
 {
     public class MaterialsVM : SideProperties
     {
-        public string MaterialsName { get; set; }
-        public string MaterialsMeasure { get; set; }
-        public int MaterialsUnitPrice { get; set; }
-        public int MaterialsCount { get; set; }
+        public static string MaterialsName { get; set; }
+        public static string MaterialsMeasure { get; set; }
+        public static int MaterialsUnitPrice { get; set; }
+        public static int MaterialsCount { get; set; }
         public int MaterialsFullPrice { get; set; }
         public static Materials SelectedMaterials { get; set; }
 
@@ -132,14 +129,13 @@ namespace Сафари.ViewModels.ForMaterials
             {
                 return openEditMaterialsWnd ?? new RelayCommand(obj =>
                 {
-                    OpenEditMaterialsWindowMethod();
-                }
-                    );
+                    OpenEditMaterialsWindowMethod(SelectedMaterials);
+                } );
             }
         }
-        private void OpenEditMaterialsWindowMethod()
+        private void OpenEditMaterialsWindowMethod(Materials material)
         {
-            EditMaterialsWindow editMaterialsWindow = new EditMaterialsWindow();
+            EditMaterialsWindow editMaterialsWindow = new EditMaterialsWindow(material);
             SetCenterPositionAndOpen(editMaterialsWindow);
         }
         public RelayCommand deleteMaterials;
@@ -158,41 +154,7 @@ namespace Сафари.ViewModels.ForMaterials
                 }
                 );
             }
-        }
-        public static MaterialsVM _dataManageVM = new MaterialsVM();
-        private RelayCommand buyMaterials;
-        public RelayCommand BuyMaterials
-        {
-            get
-            {
-                return buyMaterials ?? (new RelayCommand(obj =>
-                {
-                    _dataManageVM.SetCenterPositionAndOpen(new CountWindow());
-
-                    using (ApplicationContext db = new ApplicationContext())
-                    {
-                        db.UsersWithMaterials.Add(new UsersWithMaterials(int.Parse(CountOfBuyingByUsersMaterials.count)));
-                        db.SaveChanges();
-                    }
-                }));
-            }
-        }
-        private RelayCommand openCountWnd;
-        public RelayCommand OpenCountWnd
-        {
-            get
-            {
-                return openCountWnd ?? new RelayCommand(obj =>
-                {
-                    OpenAddCountMethod();
-                }
-                    );
-            }
-        }
-        private void OpenAddCountMethod()
-        {
-            CountWindow newCountWindow = new CountWindow();
-            SetCenterPositionAndOpen(newCountWindow);
-        }
+        }       
+        
     }
 }

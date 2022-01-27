@@ -2,9 +2,6 @@
 using Сафари.Data.Models.MaterialsModels;
 using Сафари.Data.Models.UsersModels;
 using Сафари.Data.Models.WorkersModels;
-
-
-
 namespace Сафари.Data.MainData
 {
     public class ApplicationContext : DbContext

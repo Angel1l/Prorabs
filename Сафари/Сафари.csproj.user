@@ -13,9 +13,6 @@
     <Compile Update="Views\ViewForMaterials\AddNewMaterialsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ViewForMaterials\CountWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\ViewForMaterials\EditMaterialsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,9 +46,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ViewForMaterials\AddNewMaterialsWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\ViewForMaterials\CountWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ViewForMaterials\EditMaterialsWindow.xaml">

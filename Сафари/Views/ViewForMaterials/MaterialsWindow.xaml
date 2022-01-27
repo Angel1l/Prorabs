@@ -18,7 +18,6 @@
                 </TabItem.Header>
                 <TabItem.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="SCH" Command="{Binding OpenCountWnd}"/>
                         <MenuItem Header="Додати" Command="{Binding OpenAddNewMaterialsWnd}"/>
                         <MenuItem Header="Видалити" Command="{Binding DeleteMaterials}"/>
                         <MenuItem Header="Змінити" Command="{Binding OpenEditMaterialsWnd}"/>

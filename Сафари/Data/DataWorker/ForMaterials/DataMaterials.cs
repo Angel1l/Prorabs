@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Сафари.Commands;
 using Сафари.Data.MainData;
 using Сафари.Data.Models.MaterialsModels;
-using Сафари.ViewModels.ForUsers;
 using Сафари.ViewModels.MainModels;
 
 namespace Сафари.Data.DataWorker.ForMaterials
@@ -19,7 +17,6 @@ namespace Сафари.Data.DataWorker.ForMaterials
                 return result;
             }
         }
-
         public static string CreateMaterials(string materialsName, string materialsMeasure, int materialsUnitPrice, int materialsCount, int materialsFullPrice)
         {
             string result = "Успішно!";
@@ -49,7 +46,6 @@ namespace Сафари.Data.DataWorker.ForMaterials
                 return result;
             }
         }
-
         public static string EditMaterials(Materials oldmaterials, string newmaterialsName, string newmaterialsMeasure, int newmaterialsUnitPrice, int newmaterialsCount, int newmaterialsFullPrice)
         {
             string result = "Введіть усі поля";
@@ -69,12 +65,10 @@ namespace Сафари.Data.DataWorker.ForMaterials
                 catch (Exception ex)
                 {
                    
-                }
-                
+                }               
             }
             return result;
         }
-
         public static string DeleteMaterials(Materials materials)
         {
             string result = "Такого працівника не існує";

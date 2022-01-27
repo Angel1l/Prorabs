@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Сафари.Data.Models.MaterialsModels;
 using Сафари.ViewModels.ForMaterials;
 
 namespace Сафари.Views.ViewForMaterials
@@ -20,10 +21,15 @@ namespace Сафари.Views.ViewForMaterials
     /// </summary>
     public partial class EditMaterialsWindow : Window
     {
-        public EditMaterialsWindow()
+        public EditMaterialsWindow(Materials SelectedMaterials)
         {
             InitializeComponent();
             DataContext = new MaterialsVM();
+            MaterialsVM.SelectedMaterials = SelectedMaterials;
+            MaterialsVM.MaterialsCount = SelectedMaterials.Count;
+            MaterialsVM.MaterialsMeasure = SelectedMaterials.Measure;
+            MaterialsVM.MaterialsName = SelectedMaterials.Name;
+            MaterialsVM.MaterialsUnitPrice = SelectedMaterials.UnitPrice;
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ofDyIDkpJWh4t9KV9zO7RzcThYnungbtKIezYVDcOCrka9p2SpdCHjqWLm27d+KsYdfB8Nr7gZrxrxOwqK9+DQ==",
+  "dgSpecHash": "BNbzsF2GlI3jvA+mNuyJYpWvpac58AuuCcLbKPvAwsSVp1aQy1GnHAl4RUqVWDKKfy8jX2xw1pzy4kIfNxNYvw==",
   "success": true,
-  "projectFilePath": "D:\\C#\\GEYCLUB\\WPF\\Prorabs (5)\\Prorabs\\Сафари\\Сафари.csproj",
+  "projectFilePath": "D:\\Prorabs (7)\\Prorabs\\Сафари\\Сафари.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\drach\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\drach\\.nuget\\packages\\materialdesigncolors\\2.0.4\\materialdesigncolors.2.0.4.nupkg.sha512",

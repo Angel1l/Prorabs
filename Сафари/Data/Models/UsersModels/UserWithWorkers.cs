@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Сафари.Data.Models.UsersModels
 {
     public class UserWithWorkers
