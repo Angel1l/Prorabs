@@ -19,7 +19,7 @@ namespace Сафари.Data.DataWorker.ForCount
         {
             using (ApplicationContext db = new ApplicationContext())
             {
-                string result = "Успешно!";
+                string result = "Успішно!";
                 bool checkIsExist = db.Materials.Any((el => el.Count == materialsCount && el.FullPrice == materialsFullPrice));
                 if (!checkIsExist)
                 {

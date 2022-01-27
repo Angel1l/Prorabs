@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Сафари.Data.MainData;
 using Сафари.Data.Models.WorkersModels;
@@ -17,7 +18,7 @@ namespace Сафари.Data.DataWorker.ForWorkers
         }
         public static string CreateWorkers(string name, string surname, string patronymic, string phone, string notes)
         {
-            string result = "Успешно!";
+            string result = "Успішно!";
             using (ApplicationContext db = new ApplicationContext())
             {                
                 bool checkIsExist = db.Workers.Any(el => el.Name == name && el.Surname == surname && el.Patronymic == patronymic && el.Phone == phone && el.Notes == notes);
@@ -39,7 +40,7 @@ namespace Сафари.Data.DataWorker.ForWorkers
         }
         public static string DeleteWorkers(Workers workers)
         {            
-            string result = "Такого работника не существует";
+            string result = "Такого працівника не існує";
             using (ApplicationContext db = new ApplicationContext())
             {
                 db.Workers.Remove(workers);
@@ -51,17 +52,25 @@ namespace Сафари.Data.DataWorker.ForWorkers
         public static string EditWorkers(Workers oldworkers, string newname, string newsurname, string newpatronymic, string newuniphone, string newnotes)
         {
             //редактируем сотрудника
-            string result = "Такого матеріалу не існує";
+            string result = "Введіть усі поля";
             using (ApplicationContext db = new ApplicationContext())
             {
-                Workers workers = db.Workers.FirstOrDefault(b => b.Id == oldworkers.Id);
-                workers.Name = newname;
-                workers.Surname = newsurname;
-                workers.Patronymic = newpatronymic;
-                workers.Phone = newuniphone;
-                workers.Notes = newnotes;
-                db.SaveChanges();
-                result = "Співробітник  " + workers.Name + "  відредагован";
+                try
+                {
+                    Workers workers = db.Workers.FirstOrDefault(b => b.Id == oldworkers.Id);
+                    workers.Name = newname;
+                    workers.Surname = newsurname;
+                    workers.Patronymic = newpatronymic;
+                    workers.Phone = newuniphone;
+                    workers.Notes = newnotes;
+                    db.SaveChanges();
+                    result = "Співробітник  " + workers.Name + "  відредагован";
+                }
+                catch(Exception ex)
+                {
+
+                    
+                }               
             }
             return result;
         }

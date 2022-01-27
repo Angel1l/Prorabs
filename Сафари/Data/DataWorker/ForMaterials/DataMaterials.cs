@@ -5,11 +5,11 @@ using Сафари.Commands;
 using Сафари.Data.MainData;
 using Сафари.Data.Models.MaterialsModels;
 using Сафари.ViewModels.ForUsers;
-
+using Сафари.ViewModels.MainModels;
 
 namespace Сафари.Data.DataWorker.ForMaterials
 {
-    public class DataMaterials
+    public class DataMaterials : SideProperties
     {
         public static List<Materials> GetAllMaterials()
         {
@@ -22,22 +22,29 @@ namespace Сафари.Data.DataWorker.ForMaterials
 
         public static string CreateMaterials(string materialsName, string materialsMeasure, int materialsUnitPrice, int materialsCount, int materialsFullPrice)
         {
-            string result = "Успешно!";
+            string result = "Успішно!";
             using (ApplicationContext db = new ApplicationContext())
             {
                 bool checkIsExist = db.Materials.Any(el => el.Name == materialsName && el.Measure == materialsMeasure && el.UnitPrice == materialsUnitPrice && el.Count == materialsCount && el.FullPrice == materialsFullPrice);
                 if (!checkIsExist)
                 {
-                    Materials newmaterials = new Materials
+                    try
                     {
-                        Name = materialsName,
-                        Measure = materialsMeasure,
-                        UnitPrice = materialsUnitPrice,
-                        Count = materialsCount,
-                        FullPrice = materialsCount * materialsUnitPrice
-                    };
-                    db.Materials.Add(newmaterials);
-                    db.SaveChanges();
+                        Materials newmaterials = new Materials
+                        {
+                            Name = materialsName,
+                            Measure = materialsMeasure,
+                            UnitPrice = materialsUnitPrice,
+                            Count = materialsCount,
+                            FullPrice = materialsCount * materialsUnitPrice
+                        };
+                        db.Materials.Add(newmaterials);
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        result = ex.Message;
+                    }
                 }
                 return result;
             }
@@ -45,24 +52,32 @@ namespace Сафари.Data.DataWorker.ForMaterials
 
         public static string EditMaterials(Materials oldmaterials, string newmaterialsName, string newmaterialsMeasure, int newmaterialsUnitPrice, int newmaterialsCount, int newmaterialsFullPrice)
         {
-            string result = "Такого матеріалу не існує";
+            string result = "Введіть усі поля";
             using (ApplicationContext db = new ApplicationContext())
             {
-                Materials materials = db.Materials.FirstOrDefault(b => b.Id == oldmaterials.Id);
-                materials.Name = newmaterialsName;
-                materials.Measure = newmaterialsMeasure;
-                materials.UnitPrice = newmaterialsUnitPrice;
-                materials.Count = newmaterialsCount;
-                materials.FullPrice = newmaterialsCount * newmaterialsUnitPrice;
-                db.SaveChanges();
-                result = "Матеріал  " + materials.Name + "  відредагован";
+                try
+                {
+                    Materials materials = db.Materials.FirstOrDefault(b => b.Id == oldmaterials.Id);
+                    materials.Name = newmaterialsName;
+                    materials.Measure = newmaterialsMeasure;
+                    materials.UnitPrice = newmaterialsUnitPrice;
+                    materials.Count = newmaterialsCount;
+                    materials.FullPrice = newmaterialsCount * newmaterialsUnitPrice;
+                    db.SaveChanges();
+                    result = "Матеріал  " + materials.Name + "  відредагован";
+                }
+                catch (Exception ex)
+                {
+                   
+                }
+                
             }
             return result;
         }
 
         public static string DeleteMaterials(Materials materials)
         {
-            string result = "Такого работника не существует";
+            string result = "Такого працівника не існує";
             using (ApplicationContext db = new ApplicationContext())
             {
                 db.Materials.Remove(materials);

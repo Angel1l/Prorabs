@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using Сафари.Commands;
 using Сафари.Data.DataWorker.ForUsers;
 using Сафари.Data.Models.MaterialsModels;
@@ -24,37 +25,54 @@ namespace Сафари.ViewModels.ForUsers
         private RelayCommand enterToProgramm;
         public RelayCommand EnterToProgramm
         {
+
             get
             {
-                return enterToProgramm ?? (new RelayCommand(obj =>
-                {
-                    if (UsersLogin.Length == 0 || UsersPassword.Length == 0)
-                    {
-                        MessageBoxResult result = MessageBox.Show("Логін або пароль не вірний");
-                    }
-                    else
-                    {
-                        var User = DataUsers.findUser(UsersLogin, UsersPassword);
 
-                        if (User != null)
+                return enterToProgramm ?? (new RelayCommand(obj =>
+                {                   
+                        if (UsersLogin.Length == 0 || UsersPassword.Length == 0)
                         {
 
-                            var usermainWindow = new UserMainWindow();
-                            usermainWindow.Show();
-                            var window = Application.Current.Windows[0];
-                            if (window != null)
-                                window.Close();
+                            var User = DataUsers.findUser(UsersLogin, UsersPassword);
+
+                            if (User != null)
+                            {
+
+                                var usermainWindow = new UserMainWindow();
+                                usermainWindow.Show();
+                                var window = Application.Current.Windows[0];
+                                if (window != null)
+                                    window.Close();
 
 
+                            }
+                            else
+                            {
+                                MessageBoxResult result = MessageBox.Show("Логін або пароль не вірний");
+                            }
                         }
                         else
                         {
-                            MessageBoxResult result = MessageBox.Show("Логін або пароль не вірний, створіть аккаунт!");
-                        }
-                    }
+                            var User = DataUsers.findUser(UsersLogin, UsersPassword);
+
+                            if (User != null)
+                            {
+
+                                var usermainWindow = new UserMainWindow();
+                                usermainWindow.Show();
+                                var window = Application.Current.Windows[0];
+                                if (window != null)
+                                    window.Close();
 
 
-                }));
+                            }
+                            else
+                            {
+                                MessageBoxResult result = MessageBox.Show("Логін або пароль не вірний, створіть аккаунт!");
+                            }
+                        }                                      
+                }));           
             }
         }
        
